@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/bottom_workouts"
+        android:title="@string/work_outs"
+        android:icon="@drawable/icon1"
+        />
+
+    <item android:id="@+id/bottom_custom"
+        android:title="@string/custom"
+        android:icon="@drawable/icon2"
+        />
+
+    <item android:id="@+id/bottom_achievements"
+        android:title="@string/achievements"
+        android:icon="@drawable/icon3"
+        />
+
+    <item android:id="@+id/bottom_music"
+        android:title="@string/music"
+        android:icon="@drawable/icon4"
+        />
+
+    <item android:id="@+id/bottom_information"
+        android:title="@string/information"
+        android:icon="@drawable/icon5"
+        />
+
+</menu>
