@@ -1,9 +1,11 @@
 package com.tlu.btlandroid;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
@@ -34,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent it = new Intent(MainActivity.this, Activity_home.class);
                 startActivity(it);
             }
-        },3000 );
+        },1 );
 
     }
 }

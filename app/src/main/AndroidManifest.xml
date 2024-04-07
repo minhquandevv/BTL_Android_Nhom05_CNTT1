@@ -13,10 +13,13 @@
         android:theme="@style/Theme.BTLAndroid"
         tools:targetApi="31">
         <activity
-            android:name=".Activity_home"
+            android:name=".ActivityInformation"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".SignupActivity"
+            android:exported="true" />
+        <activity
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,6 +27,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Activity_home"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+        </activity>
+        <activity android:name=".ActivityMetrics" />
+        <activity android:name=".ActivityWeight" />
+        <activity android:name=".ActivityCalories" />
+        <activity android:name=".ActivityBmi" />
+        <activity android:name=".Activity_customer"/>
+        <activity android:name=".Activity_fitness"/>
     </application>
 
 </manifest>

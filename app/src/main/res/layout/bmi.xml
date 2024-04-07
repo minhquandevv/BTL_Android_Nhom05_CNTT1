@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#213C44">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Body Mass Index(BMI)"
+        android:textColor="@color/ruby"
+        android:textSize="25dp"
+        android:textStyle="bold">
+    </TextView>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="The World Health Organization's (WHO) recommended healthy BMI range is 18.5-25 for both male and female."
+        android:textColor="@color/grey"
+        android:textSize="15dp">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="BMI is a measurement of a person's leanness or corpulence based on their height and weight, and is intended to quantify tissue mass. Although BMI has limitations in that it is an estimate that cannot take body composition into account, it can be used as a general indicator of a healthy body weight based on a person's height. The value obtained from the calculation of BMI is widely used to categorize whether a person is underweight, normal weight, overweight, or obese depending on what range the value falls between. These ranges of BMI vary based on factors such as region and age, and are sometimes further divided into subcategories such as severely underweight or very severely obese. As previously mentioned however, due to a wide variety of body types as well as distribution of muscle, bone mass, and fat, BMI should be considered along with other measurements rather than being used as the sole method for determining a person's healthy body weight."
+        android:textColor="@color/grey"
+        android:textSize="15dp">
+    </TextView>
+</LinearLayout>

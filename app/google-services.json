@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "643107020307",
+    "firebase_url": "https://workout-5c825-default-rtdb.firebaseio.com",
+    "project_id": "workout-5c825",
+    "storage_bucket": "workout-5c825.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643107020307:android:c434f589287dbadd4da9e6",
+        "android_client_info": {
+          "package_name": "com.example.testdatabse"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX_q9ymvrFG0koFLeeDPFAIF6Oh-4MW_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643107020307:android:7ecfa44f3199a4a44da9e6",
+        "android_client_info": {
+          "package_name": "com.tlu.btlandroid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX_q9ymvrFG0koFLeeDPFAIF6Oh-4MW_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
