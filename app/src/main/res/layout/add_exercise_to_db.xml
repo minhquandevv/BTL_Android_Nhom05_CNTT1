@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+        android:background="@color/white">
+        <EditText
+            android:id="@+id/edit_name_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:textSize="20sp">
+        </EditText>
+        <EditText
+            android:id="@+id/edit_duration_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Duration"
+            android:textSize="20sp">
+        </EditText>
+        <EditText
+            android:id="@+id/edit_calorburn_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Calorburn"
+            android:textSize="20sp">
+        </EditText>
+
+    </LinearLayout>
+</LinearLayout>

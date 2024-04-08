@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#213C44"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp">
+
+    <LinearLayout
+        android:id="@+id/ln1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#213C44"
+
+        >
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_weight="0.8"
+            android:gravity="left|center_vertical"
+            android:text="Trang chủ"
+            android:textColor="@color/white"
+            android:textSize="23dp" />
+
+        <Button
+            android:id="@+id/button_setting"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_weight="0.05"
+            android:background="@drawable/setting">
+
+        </Button>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ln1"
+        android:gravity="left|center_horizontal"
+        android:paddingTop="15dp"
+        android:text="Hàng ngày"
+        android:textColor="@color/white"
+        android:textSize="20dp">
+
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv2"
+        android:paddingTop="5dp"
+        android:text="Thói quen tập luyện hàng ngày"
+        android:textColor="@color/white"
+        android:textSize="18dp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv3"
+        android:paddingTop="10dp"
+        android:textColor="@color/white"
+        android:textSize="20dp">
+
+    </TextView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv4"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+    <TextView
+        android:id="@+id/tv5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rc1"
+        android:text="Hôm nay là ngày: "
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/tv6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv5"
+        android:paddingTop="10dp"
+        android:text="Hoàn thành: 0/0 bài tập"
+        android:textColor="@color/white"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/tv7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv5"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@id/tv6"
+        android:paddingTop="10dp"
+        android:text="Calo: 0/0 calo"
+        android:textColor="@color/white"
+        android:textSize="10dp" />
+
+    <TextView
+        android:id="@+id/tv8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv7"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="-25dp"
+        android:layout_toEndOf="@id/tv7"
+        android:paddingTop="10dp"
+        android:text="Duration: 0/0 minutes"
+        android:textColor="@color/white"
+        android:textSize="10dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc2"
+        android:layout_width="381dp"
+        android:layout_height="270dp"
+        android:layout_below="@+id/tv8"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="10dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</RelativeLayout>

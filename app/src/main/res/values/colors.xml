@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="bacgroundworkout">#2A393F</color>
+    <color name="darkblue">#222952</color>
+    <color name="ruby">#66FFFF</color>
+    <color name="header">#00868B</color>
+    <color name="grey">#CCCCCC</color>
+    <color name="colorAccent">#4CAF50</color>
+    <color name="darkgreen">#213C44</color>
+
+</resources>

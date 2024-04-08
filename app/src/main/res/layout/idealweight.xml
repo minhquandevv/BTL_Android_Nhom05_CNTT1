@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#213C44">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ideal Weight"
+        android:textColor="@color/ruby"
+        android:textSize="25dp"
+        android:textStyle="bold">
+    </TextView>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="The Ideal Weight Calculator computes ideal (health-wise) bodyweight(IBW) ranges based on height, gender, and age. The idea of an IBW using a formula to determine it precisely has been sought after by many experts"
+        android:textColor="@color/grey"
+        android:textSize="15dp">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Calculation formula:"
+        android:textStyle="bold"
+        android:textColor="@color/grey"
+        android:textSize="15dp">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="     Ideal weight of the body for men is calculated with Body mass index is 23."
+        android:textColor="@color/grey"
+        android:textSize="15dp">
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="     Ideal weight of the body for women counted with Body mass index is 21.5."
+        android:textColor="@color/grey"
+        android:textSize="15dp">
+    </TextView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/pow"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/grey"
+        android:textSize="15dp">
+    </TextView>
+</LinearLayout>

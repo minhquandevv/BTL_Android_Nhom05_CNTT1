@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">HomeWorkout</string>
+    <string name="work_outs">Trang chủ</string>
+    <string name="custom">Tìm kiếm</string>
+    <string name="achievements">Cơ bắp</string>
+    <string name="music">Nhạc</string>
+    <string name="information">Cá nhân</string>
+    <string name="metrics_health"><![CDATA[Metrics & Health]]></string>
+    <string name="fitness_exercise_guide"><![CDATA[Fitness & Exercise Guide]]></string>
+    <string name="term_condition"><![CDATA[Term & Condition]]></string>
+    <string name="log_out"><![CDATA[Log Out]]></string>
+    <string name="pow">Ideal weight = Height<sup>2</sup> * Sex</string>
+    <string name="pow2">Kg/m<sup>2</sup></string>
+    <string name="Basics"><![CDATA[Basics Principles & Terminology]]></string>
+</resources>

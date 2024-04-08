@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#213C44">
+
+    <RelativeLayout
+        style="@style/header_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/header">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Metrics and Health"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:textStyle="bold">
+        </TextView>
+    </RelativeLayout>
+
+    <TableLayout
+        android:id="@+id/profile_table_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp">
+
+        <TableRow style="@style/table_row_profile_style">
+
+            <TextView
+                style="@style/first_text_in_row_profile_style"
+                android:text="Sex"
+                android:textColor="@color/white" />
+
+            <RadioGroup
+                android:id="@+id/profile_radio_group"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/profile_man_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Male"
+                    android:textColor="@color/ruby" />
+
+                <RadioButton
+                    android:id="@+id/profile_woman_radio_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:text="Female"
+                    android:textColor="@color/ruby" />
+            </RadioGroup>
+        </TableRow>
+
+        <TableRow style="@style/table_row_profile_style">
+
+            <TextView
+                style="@style/first_text_in_row_profile_style"
+                android:text="Height"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/profile_height"
+                android:inputType="numberDecimal"
+                android:textColor="@color/ruby"
+                tools:text="" />
+
+            <TextView
+                android:text="cm"
+                android:textColor="@color/white" />
+        </TableRow>
+
+        <TableRow style="@style/table_row_profile_style">
+
+            <TextView
+                style="@style/first_text_in_row_profile_style"
+                android:text="Weight"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/profile_weight"
+                style="@style/edit_text_profile_style"
+                android:textColor="@color/ruby"
+                android:inputType="numberDecimal"
+                tools:text="" />
+
+            <TextView
+                android:text="kg"
+                android:textColor="@color/white" />
+        </TableRow>
+
+        <TableRow style="@style/table_row_profile_style">
+
+            <TextView
+                style="@style/first_text_in_row_profile_style"
+                android:text="Age"
+                android:textColor="@color/white" />
+
+            <EditText
+                android:id="@+id/profile_age"
+                style="@style/edit_text_profile_style"
+                android:textColor="@color/ruby"
+                tools:text="" />
+
+            <TextView
+                android:text="years"
+                android:textColor="@color/white" />
+        </TableRow>
+    </TableLayout>
+
+    <TextView
+    android:id="@+id/profile_bmi"
+    style="@style/first_text_in_row_profile_style"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="40dp"
+    android:text="Body Mass Index(BMI)"
+    android:drawableRight="@drawable/info"
+    android:textColor="@color/ruby" />
+
+    <TextView
+        android:id="@+id/profile_bmi_number"
+        style="@style/first_text_in_row_profile_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_bmi"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/pow2"
+        android:textColor="@color/white" />
+    <TextView
+        android:id="@+id/profile_calo"
+        style="@style/first_text_in_row_profile_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:text="Calorie"
+        android:drawableRight="@drawable/info"
+        android:textColor="@color/ruby" />
+
+    <TextView
+        android:id="@+id/profile_calo_number"
+        style="@style/first_text_in_row_profile_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_calo"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Calories/day"
+        android:textColor="@color/white" />
+    <TextView
+        android:id="@+id/profile_iweight"
+        style="@style/first_text_in_row_profile_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:text="Ideal Weight"
+        android:drawableRight="@drawable/info"
+        android:textColor="@color/ruby" />
+
+    <TextView
+        android:id="@+id/profile_iweight_number"
+        style="@style/first_text_in_row_profile_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profile_iweight"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Kg"
+        android:textColor="@color/white" />
+    <Button
+        android:id="@+id/calculate_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/ruby"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:text="Update your status">
+    </Button>
+</LinearLayout>

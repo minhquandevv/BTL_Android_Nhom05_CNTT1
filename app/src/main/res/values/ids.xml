@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="btnPlay" />
+    <item type="id" name="btnStop" />
+    <item type="id" name="txtTenBaiHat" />
+    <item type="id" name="textViewMusic" />
+    <item type="id" name="btnNext" />
+    <item type="id" name="btnPrevius" />
+    <item type="id" name="btnPause" />
+    <item type="id" name="ivDisc" />
+    <item type="id" name="txtTotalTime" />
+    <item type="id" name="txtTimeSong" />
+    <item type="id" name="seekBar" />
+    <item type="id" name="lvBaiHat" />
+
+
+
+</resources>
