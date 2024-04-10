@@ -105,7 +105,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
             }
 
             holder.mNameTextView.setText("Name: " + name);
-            holder.mDurationTextView.setText("Duration: " + duration +" minutes");
+            holder.mDurationTextView.setText("Duration: " + duration + " minutes");
             holder.mCaloBurnTextView.setText("CaloBurn: " + calorieBurn + " kcal");
 
             final String finalName = name;

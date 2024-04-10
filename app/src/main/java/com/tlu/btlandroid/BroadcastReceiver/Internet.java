@@ -20,7 +20,6 @@ public class Internet extends BroadcastReceiver {
                 Toast.makeText(context, "Internet Connected", Toast.LENGTH_SHORT).show();
             }else {
                 Toast.makeText(context, "Internet Disconnected", Toast.LENGTH_SHORT).show();
-
             }
         }
     }
@@ -35,6 +34,8 @@ public class Internet extends BroadcastReceiver {
             return false;
         }
         NetworkCapabilities networkCapabilities = connectivityManager.getNetworkCapabilities(network);
-        return networkCapabilities != null && networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI);
+        return networkCapabilities != null && (networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) || networkCapabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR));
     }
 }
+
+

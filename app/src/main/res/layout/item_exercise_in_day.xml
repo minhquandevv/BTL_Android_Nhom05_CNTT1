@@ -4,6 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:clickable="true"
+    android:backgroundTint="#ABEAEA"
     app:cardCornerRadius="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginEnd="10dp">

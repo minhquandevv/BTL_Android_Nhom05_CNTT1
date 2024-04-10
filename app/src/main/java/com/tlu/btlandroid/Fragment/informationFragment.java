@@ -2,6 +2,7 @@ package com.tlu.btlandroid.Fragment;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +25,7 @@ import com.tlu.btlandroid.ActivityMetrics;
 public class informationFragment extends Fragment {
 
     private View mView;
-    private LinearLayout metrics, customer, fitness;
+    private LinearLayout metrics, customer, fitness, term;
 
     @Nullable
     @Override
@@ -76,12 +77,26 @@ public class informationFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        term.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoUrl("https://kigelapps.com/homeworkout/terms/");
+            }
+
+        });
+    }
+
+    private void gotoUrl(String url) {
+        Uri uri = Uri.parse(url);
+        startActivity(new Intent(Intent.ACTION_VIEW,uri));
     }
 
     private void initUi() {
         customer = mView.findViewById(R.id.layout_customer);
         metrics = mView.findViewById(R.id.layout_metrics);
         fitness = mView.findViewById(R.id.layout_fitness);
+        term = mView.findViewById(R.id.layout_term);
+
     }
 
 }

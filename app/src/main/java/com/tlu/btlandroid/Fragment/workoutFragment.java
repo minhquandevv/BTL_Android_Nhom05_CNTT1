@@ -56,9 +56,8 @@ public class workoutFragment extends Fragment {
         mView = inflater.inflate(R.layout.workoutfragment, container, false);
 
         rcv = mView.findViewById(R.id.rc1);
-        dayadapter = new Dayadapter(mView.getContext());
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mView.getContext(), RecyclerView.HORIZONTAL, false);
+        dayadapter = new Dayadapter(getContext(), getListDay());
+        LinearLayoutManager linearLayoutManager =new LinearLayoutManager(mView.getContext(),RecyclerView.HORIZONTAL,false);
         rcv.setLayoutManager(linearLayoutManager);
         dayadapter.setData(getListDay());
         rcv.setAdapter(dayadapter);
@@ -68,20 +67,21 @@ public class workoutFragment extends Fragment {
         LinearLayoutManager linearLayoutManager2 = new LinearLayoutManager(mView.getContext());
         rc2.setLayoutManager(linearLayoutManager2);
 
-        String[] dayNames = {"Chủ nhật", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm", "Thứ Sáu", "Thứ Bảy"};
+        String[] dayNames = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
         String dayName = dayNames[calendar.get(Calendar.DAY_OF_WEEK) - 1];
-
+        dayadapter.setData(getListDay());
+        rcv.setAdapter(dayadapter);
         tv5 = mView.findViewById(R.id.tv5);
-        tv5.setText("Hôm nay là: " + dayName + ", ngày: " + localDate.toString());
+        tv5.setText("" + dayName + ", " + localDate.toString());
 
 
         ExerciseDiaryHelper exerciseDiaryHelper = new ExerciseDiaryHelper(getContext());
         tv6 = mView.findViewById(R.id.tv6);
         tv6.setText("Exercise: " + exerciseDiaryHelper.getExerciseCount());
         tv7 = mView.findViewById(R.id.tv7);
-        tv7.setText("Calo Burn: " + exerciseDiaryHelper.getCaloBurnSum());
+        tv7.setText("Calo: " + exerciseDiaryHelper.getCaloBurnSum() + " cal");
         tv8 = mView.findViewById(R.id.tv8);
-        tv8.setText("Duration: " + exerciseDiaryHelper.getDurationSum());
+        tv8.setText("Duration: " + exerciseDiaryHelper.getDurationSum() + " min");
 
         ExerciseDiaryAdapter.setOnItemClickListener(new ExerciseAdapter.OnItemClickListener() {
             @Override
@@ -89,10 +89,53 @@ public class workoutFragment extends Fragment {
                 showExerciseInstructionDialog(exerciseName);
             }
         });
-        tv4 = mView.findViewById(R.id.tv4);
-        tv4.setText(dayName);
         return mView;
     }
+
+
+    private List<day> getListDay() {
+        List<day> list = new ArrayList<>();
+
+        // Get current day of week (1 to 7, where 1=Sunday, 2=Monday, ..., 7=Saturday)
+        int currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+
+        // Add today's day
+        list.add(new day(getDayImageResource(currentDayOfWeek), getDayName(currentDayOfWeek)));
+
+        // Calculate tomorrow's day
+        int tomorrowDayOfWeek = currentDayOfWeek + 1 > 7 ? 1 : currentDayOfWeek + 1;
+        list.add(new day(getDayImageResource(tomorrowDayOfWeek), getDayName(tomorrowDayOfWeek)));
+
+        return list;
+    }
+
+
+    private int getDayImageResource(int dayOfWeek) {
+        switch (dayOfWeek) {
+            case Calendar.SUNDAY:
+                return R.drawable.chunhat;
+            case Calendar.MONDAY:
+                return R.drawable.thu2;
+            case Calendar.TUESDAY:
+                return R.drawable.thu3;
+            case Calendar.WEDNESDAY:
+                return R.drawable.thu4;
+            case Calendar.THURSDAY:
+                return R.drawable.thu5;
+            case Calendar.FRIDAY:
+                return R.drawable.thu6;
+            case Calendar.SATURDAY:
+                return R.drawable.thu7;
+            default:
+                return R.drawable.chunhat;
+        }
+    }
+
+    private String getDayName(int dayOfWeek) {
+        String[] dayNames = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        return dayNames[dayOfWeek - 1];
+    }
+
 
     private void showExerciseInstructionDialog(String exerciseName) {
         int videoResource = getVideoResourceFromExerciseName(exerciseName);
@@ -130,17 +173,6 @@ public class workoutFragment extends Fragment {
                 return -1;
         }
     }
-    private List<day> getListDay() {
-        List<day> list = new ArrayList<>();
-        list.add(new day(R.drawable.thu2, "THỨ HAI"));
-        list.add(new day(R.drawable.thu3, "THỨ BA"));
-        list.add(new day(R.drawable.thu4, "THỨ TƯ"));
-        list.add(new day(R.drawable.thu5, "THỨ NĂM"));
-        list.add(new day(R.drawable.thu6, "THỨ SÁU"));
-        list.add(new day(R.drawable.thu7, "THỨ BẨY"));
-        list.add(new day(R.drawable.chunhat, "CHỦ NHẬT"));
-        return list;
-    }
 
     @Override
     public void onResume() {
@@ -159,9 +191,7 @@ public class workoutFragment extends Fragment {
         rc2.setAdapter(exerciseDiaryAdapter);
 
         tv6.setText("Exercise: " + exerciseDiaryHelper.getExerciseCount());
-        tv7.setText("Calo Burn: " + exerciseDiaryHelper.getCaloBurnSum());
-        tv8.setText("Duration: " + exerciseDiaryHelper.getDurationSum());
+        tv7.setText("Calo: " + exerciseDiaryHelper.getCaloBurnSum() + " cal");
+        tv8.setText("Time: " + exerciseDiaryHelper.getDurationSum() + " min");
     }
-
-
 }

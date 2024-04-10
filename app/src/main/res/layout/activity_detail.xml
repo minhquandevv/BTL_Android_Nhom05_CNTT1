@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#0a111b"
+    android:layout_height="match_parent"
+    tools:context=".Activity_detail">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/back_to_ac"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
+            android:background="@drawable/back_svgrepo_com"
+            >
+
+        </Button>
+
+        <TextView
+            android:id="@+id/tv_if_muscle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Information muscle"
+            android:layout_toRightOf="@+id/back_to_ac"
+            android:textSize="20dp"
+            android:gravity="center|left"
+            android:textColor="@color/white"
+            android:paddingLeft="10dp"
+            >
+
+        </TextView>
+        <TextView
+            android:id="@+id/tv_if"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:textColor="@color/white"
+            android:layout_toRightOf="@+id/back_to_ac"
+            android:layout_below="@id/tv_if_muscle"
+            android:text="Information"
+            android:textSize="15dp"
+            android:paddingLeft="10dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center|left"
+            >
+
+        </TextView>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView_muscle"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/muscleabs"
+        android:scaleType="centerCrop"
+        android:padding="15dp"
+        />
+    <TextView
+        android:id="@+id/informationMuscle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đây là thông tin cơ"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"
+        >
+
+    </TextView>
+
+</LinearLayout>

@@ -3,65 +3,66 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="10dp"
+    android:id="@+id/layout_item_muscle"
     app:cardCornerRadius="10dp">
+
     <RelativeLayout
         android:id="@+id/rlt1"
         android:background="@color/bacgroundworkout"
         android:layout_width="match_parent"
         android:padding="5dp"
-        android:layout_height="130dp">
+        android:layout_height="100dp">
 
         <ImageView
             android:id="@+id/img1"
             android:src="@drawable/chunhat"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            >
-
-        </ImageView>
+            android:layout_width="130dp"
+            android:layout_height="110dp"
+            android:layout_alignParentLeft="true" />
 
         <TextView
-            android:id="@+id/tvms1"
-            android:layout_toRightOf="@+id/img1"
+            android:id="@+id/muslce_name"
             android:text="Cơ bụng"
             android:textSize="22dp"
             android:textStyle="bold"
-            android:paddingLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </TextView>
-
-        <TextView
-            android:id="@+id/tvms2"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvms1"
-            android:layout_centerInParent="true"
-            android:layout_toRightOf="@+id/img1"
+            android:layout_toRightOf="@+id/img1"/>
+
+        <TextView
+            android:id="@+id/muslce_number1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/muslce_name"
+            android:layout_toRightOf="@id/img1"
             android:background="#587182"
+            android:padding="3dp"
             android:text="Bụng"
             android:textColor="@color/white"
-            android:textSize="15dp">
-
-        </TextView>
+            android:textSize="10dp" />
 
         <TextView
-            android:id="@+id/tvms3"
+            android:id="@+id/muslce_number2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvms2"
-            android:layout_centerInParent="true"
-            android:layout_toRightOf="@+id/img1"
-            android:background="#587182"
-            android:text="Cơ răng trước"
+            android:layout_below="@id/muslce_number1"
+            android:layout_toRightOf="@id/img1"
             android:layout_marginTop="7dp"
+            android:background="#587182"
+            android:padding="3dp"
+            android:text="Cơ răng trước"
             android:textColor="@color/white"
-            android:textSize="15dp">
+            android:textSize="10dp" />
 
-        </TextView>
-
+        <Button
+            android:id="@+id/my_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:background="@drawable/clickright" />
     </RelativeLayout>
-
 
 </androidx.cardview.widget.CardView>

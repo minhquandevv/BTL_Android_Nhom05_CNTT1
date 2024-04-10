@@ -56,9 +56,9 @@ public class ActivityMetrics extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getUser(profile);
-                textView_bmi_number.setText(profile.calculateBMI(profile.getWeight(), profile.getHeight()) + " kg/m2");
-                textView_calo_number.setText(profile.calculateMyCalories(profile.isGender(), profile.getWeight(), profile.getHeight(), profile.getAge())+ " calo/day");
-                textView_iweight_number.setText(profile.ideaWeight(profile.getHeight(), profile.isGender())+" kg");
+                textView_bmi_number.setText(profile.calculateBMI(profile.getWeight(), profile.getHeight()) + "");
+                textView_calo_number.setText(profile.calculateMyCalories(profile.isGender(), profile.getWeight(), profile.getHeight(), profile.getAge())+ "");
+                textView_iweight_number.setText(profile.ideaWeight(profile.getHeight(), profile.isGender())+"");
             }
         });
     }
@@ -68,7 +68,7 @@ public class ActivityMetrics extends AppCompatActivity {
         String ageStr = editText_age.getText().toString();
 
         if (heightStr.isEmpty() || weightStr.isEmpty() || ageStr.isEmpty()) {
-            Toast.makeText(ActivityMetrics.this, "Hãy điền thông tin vào ô trống", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ActivityMetrics.this, "Fill in the blank box", Toast.LENGTH_SHORT).show();
             return null; // Or handle the empty values as needed
         }
         float myheight = Float.parseFloat(editText_height.getText().toString());

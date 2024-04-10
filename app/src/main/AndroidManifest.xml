@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -31,12 +34,18 @@
             android:name=".MainActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".DayDetailActivity"
+            android:exported="true" />
+        <activity android:name=".Activity_detail" />
         <activity android:name=".ActivityMetrics" />
         <activity android:name=".ActivityWeight" />
         <activity android:name=".ActivityCalories" />
         <activity android:name=".ActivityBmi" />
         <activity android:name=".Activity_customer"/>
         <activity android:name=".Activity_fitness"/>
+
+        <receiver android:name=".AlarmReceiver"></receiver>
     </application>
 
 </manifest>

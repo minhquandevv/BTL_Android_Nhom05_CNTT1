@@ -10,13 +10,13 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_weight="0.14"
+        android:layout_weight="0.18"
         >
         <TextView
             android:id="@+id/tv1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cơ bắp"
+            android:text="Muscle"
             android:paddingTop="25dp"
             android:paddingLeft="25dp"
             android:layout_centerHorizontal="true"
@@ -31,7 +31,7 @@
             android:layout_below="@+id/tv1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thông tin"
+            android:text="Information"
             android:textColor="@color/white"
             android:paddingLeft="25dp"
             android:textSize="15dp"
@@ -43,8 +43,12 @@
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcv_muscle"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+
         android:paddingLeft="5dp"
         android:layout_weight="0.9">
 

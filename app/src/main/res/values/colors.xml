@@ -9,5 +9,6 @@
     <color name="grey">#CCCCCC</color>
     <color name="colorAccent">#4CAF50</color>
     <color name="darkgreen">#213C44</color>
+    <color name="gray">#808080</color>
 
 </resources>

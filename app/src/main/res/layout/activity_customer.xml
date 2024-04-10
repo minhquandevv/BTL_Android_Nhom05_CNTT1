@@ -45,11 +45,12 @@
     <Button
         android:id="@+id/button_send"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Send"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/header"
+        android:layout_height="66dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="520dp">
+        android:layout_marginTop="400dp"
+        android:backgroundTint="@color/header"
+        android:text="Send"
+        android:textColor="@color/white">
+
     </Button>
 </LinearLayout>

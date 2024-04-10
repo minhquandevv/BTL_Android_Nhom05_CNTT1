@@ -67,6 +67,7 @@
 
             <EditText
                 android:id="@+id/profile_height"
+                android:paddingLeft="20dp"
                 android:inputType="numberDecimal"
                 android:textColor="@color/ruby"
                 tools:text="" />
@@ -85,6 +86,7 @@
 
             <EditText
                 android:id="@+id/profile_weight"
+                android:paddingLeft="20dp"
                 style="@style/edit_text_profile_style"
                 android:textColor="@color/ruby"
                 android:inputType="numberDecimal"
@@ -104,6 +106,7 @@
 
             <EditText
                 android:id="@+id/profile_age"
+                android:paddingLeft="20dp"
                 style="@style/edit_text_profile_style"
                 android:textColor="@color/ruby"
                 tools:text="" />
@@ -115,71 +118,117 @@
     </TableLayout>
 
     <TextView
-    android:id="@+id/profile_bmi"
-    style="@style/first_text_in_row_profile_style"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="40dp"
-    android:text="Body Mass Index(BMI)"
-    android:drawableRight="@drawable/info"
-    android:textColor="@color/ruby" />
-
-    <TextView
-        android:id="@+id/profile_bmi_number"
+        android:id="@+id/profile_bmi"
         style="@style/first_text_in_row_profile_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/profile_bmi"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/pow2"
-        android:textColor="@color/white" />
+        android:paddingTop="20dp"
+        android:text="Body Mass Index(BMI)"
+        android:drawableRight="@drawable/info"
+        android:textColor="@color/ruby" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/first_text_in_row_profile_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profile_bmi_number"
+            android:layout_below="@id/profile_bmi"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:paddingTop="18dp"
+            android:textColor="@color/white"/>
+        <TextView
+            style="@style/first_text_in_row_profile_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_bmi"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:paddingTop="18dp"
+            android:text="@string/pow2"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/profile_calo"
         style="@style/first_text_in_row_profile_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:text="Calorie"
         android:drawableRight="@drawable/info"
         android:textColor="@color/ruby" />
 
-    <TextView
-        android:id="@+id/profile_calo_number"
-        style="@style/first_text_in_row_profile_style"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/profile_calo"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Calories/day"
-        android:textColor="@color/white" />
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/first_text_in_row_profile_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profile_calo_number"
+            android:layout_below="@id/profile_calo"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:paddingTop="18dp"
+            android:textColor="@color/white"/>
+        <TextView
+            style="@style/first_text_in_row_profile_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_calo"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:paddingTop="18dp"
+            android:text="Calories"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
     <TextView
         android:id="@+id/profile_iweight"
         style="@style/first_text_in_row_profile_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:text="Ideal Weight"
         android:drawableRight="@drawable/info"
         android:textColor="@color/ruby" />
 
-    <TextView
-        android:id="@+id/profile_iweight_number"
-        style="@style/first_text_in_row_profile_style"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/profile_iweight"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Kg"
-        android:textColor="@color/white" />
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/first_text_in_row_profile_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profile_iweight_number"
+            android:layout_below="@id/profile_iweight"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:paddingTop="18dp"
+            android:textColor="@color/white"/>
+        <TextView
+            style="@style/first_text_in_row_profile_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_iweight"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:paddingTop="18dp"
+            android:text="Kg"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
     <Button
         android:id="@+id/calculate_status"
         android:layout_width="match_parent"

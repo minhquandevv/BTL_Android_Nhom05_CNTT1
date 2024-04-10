@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#213C44"
+    tools:context=".DayDetailActivity">
+    <Button
+        android:id="@+id/button_back_day"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/back_svgrepo_com"
+        android:layout_margin="10dp"
+        >
+
+    </Button>
+
+    <TextView
+        android:id="@+id/tv_name_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/button_back_day"
+        android:layout_margin="10dp"
+        android:text="Đây là ngày"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        >
+
+    </TextView>
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_below="@id/tv_name_day"
+        android:layout_marginTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <ToggleButton
+        android:id="@+id/toggleButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_below="@id/timePicker"
+        android:layout_margin="20dp"
+        android:checked="false"
+        android:onClick="OnToggleClicked" />
+
+</RelativeLayout>

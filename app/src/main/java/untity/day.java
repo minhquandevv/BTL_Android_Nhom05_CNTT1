@@ -1,6 +1,8 @@
 package untity;
 
-public class day {
+import java.io.Serializable;
+
+public class day implements Serializable {
     private int img;
     private String name;
 

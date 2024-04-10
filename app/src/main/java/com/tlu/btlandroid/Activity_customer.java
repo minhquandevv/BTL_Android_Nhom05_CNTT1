@@ -43,7 +43,7 @@ public class Activity_customer extends AppCompatActivity {
                 myRef.child(name).setValue(feedback, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                        Toast.makeText(Activity_customer.this, "Gửi phản hồi thành công", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Activity_customer.this, "Submitted successfully", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
