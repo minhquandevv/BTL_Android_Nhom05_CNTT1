@@ -83,7 +83,6 @@ public class Dayadapter extends RecyclerView.Adapter<Dayadapter.DayViewHoler> {
         }
         return 0;
     }
-
     public class DayViewHoler extends RecyclerView.ViewHolder {
         private ImageView imgDay;
         private TextView tvDay;
