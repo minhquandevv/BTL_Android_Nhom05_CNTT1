@@ -16,6 +16,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.FirebaseApp;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         ImageView logo = findViewById(R.id.logo);
         Glide.with(this).load(R.drawable.anhbia).into(logo);
         Handler hd = new Handler();
+        FirebaseApp.initializeApp(this);
 
         hd.postDelayed(new Runnable() {
             @Override

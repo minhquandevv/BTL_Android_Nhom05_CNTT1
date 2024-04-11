@@ -105,7 +105,6 @@ public class workoutFragment extends Fragment {
         // Calculate tomorrow's day
         int tomorrowDayOfWeek = currentDayOfWeek + 1 > 7 ? 1 : currentDayOfWeek + 1;
         list.add(new day(getDayImageResource(tomorrowDayOfWeek), getDayName(tomorrowDayOfWeek)));
-
         return list;
     }
 
@@ -159,16 +158,17 @@ public class workoutFragment extends Fragment {
 
     private int getVideoResourceFromExerciseName(String exerciseName) {
         switch (exerciseName) {
+
+            case "Plank":
+                return R.raw.plank;
             case "Squad":
                 return R.raw.squad;
-            case "Plank":
-                return R.raw.coin;
-            case "Hip band":
-                return R.raw.flu;
+            case "Hip bent":
+                return R.raw.bent;
             case "Leg":
-                return R.raw.celebrity;
+                return R.raw.leg;
             case "Hanging":
-                return R.raw.lilac;
+                return R.raw.hanging;
             default:
                 return -1;
         }

@@ -3,6 +3,7 @@ package com.tlu.btlandroid.Fragment;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.tlu.btlandroid.R;
 
 import java.text.SimpleDateFormat;
@@ -30,7 +34,7 @@ import untity.Song;
 public class musicFragment extends Fragment {
 
     TextView txtTenBaiHat, txtTotalTime, txtTimeSong;
-    ImageButton btnPlay, btnNext, btnPrevius, btnStop;
+    ImageButton btnPlay, btnNext;
     SeekBar seekBar;
     ImageView ivDisc;
     ArrayList<Song> arrayListSong;
@@ -39,27 +43,33 @@ public class musicFragment extends Fragment {
     ArrayAdapter<String> adapter;
     ListView listViewSongs;
     Animation animation;
+    FirebaseStorage storage;
+    StorageReference storageRef;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View mView = inflater.inflate(R.layout.musicfragment, container, false);
-        addControlls(mView);
+        addControls(mView);
+        FirebaseApp.initializeApp(getContext());
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReference();
+
         createData();
-        khoiTaoMediaPlayer();
+
+        initializeMediaPlayer();
         addAllEvents();
         animation = AnimationUtils.loadAnimation(requireActivity(), R.anim.disc_rotate);
         return mView;
     }
 
-    private void addControlls(View view) {
+
+    private void addControls(View view) {
         txtTenBaiHat = view.findViewById(R.id.txtTenBaiHat);
         txtTotalTime = view.findViewById(R.id.txtTotalTime);
         txtTimeSong = view.findViewById(R.id.txtTimeSong);
         btnPlay = view.findViewById(R.id.btnPlay);
         btnNext = view.findViewById(R.id.btnNext);
-        btnPrevius = view.findViewById(R.id.btnPrevius);
-        btnStop = view.findViewById(R.id.btnStop);
         seekBar = view.findViewById(R.id.seekBar);
         ivDisc = view.findViewById(R.id.ivDisc);
         listViewSongs = view.findViewById(R.id.lvBaiHat);
@@ -67,80 +77,113 @@ public class musicFragment extends Fragment {
 
     private void createData() {
         arrayListSong = new ArrayList<>();
-        arrayListSong.add(new Song("Ah puh - IU", R.raw.ahpuh));
-        arrayListSong.add(new Song("LILAC - IU", R.raw.lilac));
-        arrayListSong.add(new Song("Hi Spring Bye - IU", R.raw.hispringbye));
-        arrayListSong.add(new Song("Flu - IU", R.raw.flu));
-        arrayListSong.add(new Song("My sea - IU", R.raw.mysea));
-        arrayListSong.add(new Song("Coin - IU", R.raw.coin));
-        arrayListSong.add(new Song("Epilogue - IU", R.raw.epilogue));
-        arrayListSong.add(new Song("Celebrity - IU", R.raw.celebrity));
-        arrayListSong.add(new Song("Troll - IU", R.raw.troll));
-        arrayListSong.add(new Song("Empty cup - IU", R.raw.emptycup));
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference storageRef = storage.getReference("music/");
+        String storageBaseUrl = "gs://vmquan-th1-android.appspot.com";
 
-        ArrayList<String> songNames = new ArrayList<>();
-        for (Song song : arrayListSong) {
-            songNames.add(song.getTenBaiHat());
-        }
+        storageRef.listAll().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                for (StorageReference item : task.getResult().getItems()) {
+                    item.getMetadata().addOnSuccessListener(storageMetadata -> {
+                        String path = item.getPath();
+                        String tenBaiHat = path.substring(path.lastIndexOf("/") + 1);
+                        int indexOfExtension = tenBaiHat.lastIndexOf(".");
+                        if (indexOfExtension > 0) {
+                            tenBaiHat = tenBaiHat.substring(0, indexOfExtension);
+                        }
+                        String fullPath = storageBaseUrl + path;
+                        Log.d("Firebase Storage", "File path: " + fullPath);
 
-        adapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_list_item_1, songNames);
+                        String finalTenBaiHat = tenBaiHat;
+                        arrayListSong.add(new Song(finalTenBaiHat, fullPath));
 
-        listViewSongs.setAdapter(adapter);
-
-        listViewSongs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                musicFragment.this.position = position;
-                khoiTaoMediaPlayer();
-                mediaPlayer.start();
-                btnPlay.setImageResource(R.drawable.pause);
-                ivDisc.startAnimation(animation);
-                setTotalTime();
-                UpdateTimeSong();
+                        if (adapter == null) {
+                            adapter = new ArrayAdapter<>(requireActivity(), android.R.layout.simple_list_item_1);
+                            listViewSongs.setAdapter(adapter);
+                        }
+                        adapter.add(finalTenBaiHat);
+                    }).addOnFailureListener(e -> {
+                        Log.e("Firebase Storage", "Error getting metadata: " + e.getMessage());
+                    });
+                }
+            } else {
+                Log.e("Firebase Storage", "Error listing files: " + task.getException().getMessage());
             }
+        });
+
+        listViewSongs.setOnItemClickListener((parent, view, position, id) -> {
+            this.position = position;
+            if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+                mediaPlayer.stop();
+                ivDisc.clearAnimation();
+            }
+            initializeMediaPlayer();
+            mediaPlayer.start();
+            btnPlay.setImageResource(R.drawable.pause);
+            ivDisc.startAnimation(animation);
+            setTotalTime();
+            updateTimeSong();
         });
     }
 
-    private void khoiTaoMediaPlayer() {
+
+    private void initializeMediaPlayer() {
+        if (arrayListSong == null || arrayListSong.isEmpty()) {
+            return;
+        }
+
         if (mediaPlayer != null) {
             mediaPlayer.release();
         }
-        mediaPlayer = MediaPlayer.create(requireActivity(), arrayListSong.get(position).getFile());
+
+        String songUrl = String.valueOf(arrayListSong.get(position).getFile());
+        mediaPlayer = new MediaPlayer();
+        try {
+            storageRef.child(songUrl).getDownloadUrl().addOnSuccessListener(uri -> {
+                try {
+                    mediaPlayer.setDataSource(uri.toString());
+                    mediaPlayer.prepare();
+                    mediaPlayer.start();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         txtTenBaiHat.setText(arrayListSong.get(position).getTenBaiHat());
     }
 
+
     private void setTotalTime() {
         SimpleDateFormat dinhDangGio = new SimpleDateFormat("mm:ss");
-        txtTotalTime.setText(dinhDangGio.format(mediaPlayer.getDuration()) + "");
+        txtTotalTime.setText(dinhDangGio.format(mediaPlayer.getDuration()));
     }
 
-    private void UpdateTimeSong() {
+    private void updateTimeSong() {
         Handler handler = new Handler();
-
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 SimpleDateFormat dinhDangGio = new SimpleDateFormat("mm:ss");
                 txtTimeSong.setText(dinhDangGio.format(mediaPlayer.getCurrentPosition()));
                 seekBar.setProgress(mediaPlayer.getCurrentPosition());
-                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        position++;
-                        if (position > arrayListSong.size() - 1) {
-                            position = 0;
-                        }
-                        if (mediaPlayer.isPlaying()) {
-                            mediaPlayer.stop();
-                            ivDisc.clearAnimation();
-                        }
-                        khoiTaoMediaPlayer();
-                        mediaPlayer.start();
-                        btnPlay.setImageResource(R.drawable.pause);
-                        ivDisc.startAnimation(animation);
-                        setTotalTime();
-                        UpdateTimeSong();
+                mediaPlayer.setOnCompletionListener(mp -> {
+                    position++;
+                    if (position > arrayListSong.size() - 1) {
+                        position = 0;
                     }
+                    if (mediaPlayer.isPlaying()) {
+                        mediaPlayer.stop();
+                        ivDisc.clearAnimation();
+                    }
+                    initializeMediaPlayer();
+                    mediaPlayer.start();
+                    btnPlay.setImageResource(R.drawable.pause);
+                    ivDisc.startAnimation(animation);
+                    setTotalTime();
+                    updateTimeSong();
                 });
                 handler.postDelayed(this, 500);
             }
@@ -149,110 +192,22 @@ public class musicFragment extends Fragment {
     }
 
     private void addAllEvents() {
-        listViewSongs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                musicFragment.this.position = position;
-                khoiTaoMediaPlayer();
-                mediaPlayer.start();
-                btnPlay.setImageResource(R.drawable.pause);
-                ivDisc.startAnimation(animation);
-                setTotalTime();
-                UpdateTimeSong();
+        btnNext.setOnClickListener(v -> {
+            position++;
+            if (position > arrayListSong.size() - 1) {
+                position = 0;
             }
-        });
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                position++;
-                if (position > arrayListSong.size() - 1) {
-                    position = 0;
-                }
-                if (mediaPlayer.isPlaying()) {
-                    mediaPlayer.stop();
-                    ivDisc.clearAnimation();
-                }
-                khoiTaoMediaPlayer();
-                mediaPlayer.start();
-                btnPlay.setImageResource(R.drawable.pause);
-                ivDisc.startAnimation(animation);
-                setTotalTime();
-                UpdateTimeSong();
-            }
-        });
-        btnPrevius.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                position--;
-                if (position < 0) {
-                    position = arrayListSong.size() - 1;
-                }
-                if (mediaPlayer.isPlaying()) {
-                    mediaPlayer.stop();
-                }
-                khoiTaoMediaPlayer();
-                mediaPlayer.start();
-                btnPlay.setImageResource(R.drawable.pause);
-                ivDisc.startAnimation(animation);
-                setTotalTime();
-                UpdateTimeSong();
-            }
-        });
-        btnStop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            if (mediaPlayer.isPlaying()) {
                 mediaPlayer.stop();
-                mediaPlayer.release();
-                btnPlay.setImageResource(R.drawable.play);
-                khoiTaoMediaPlayer();
                 ivDisc.clearAnimation();
             }
-        });
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                mediaPlayer.seekTo(seekBar.getProgress());
-            }
+            initializeMediaPlayer();
+            mediaPlayer.start();
+            btnPlay.setImageResource(R.drawable.pause);
+            ivDisc.startAnimation(animation);
+            setTotalTime();
+            updateTimeSong();
         });
 
-        btnPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (mediaPlayer.isPlaying()) {
-                    mediaPlayer.pause();
-                    btnPlay.setImageResource(R.drawable.play);
-                    ivDisc.clearAnimation();
-                } else {
-                    mediaPlayer.start();
-                    btnPlay.setImageResource(R.drawable.pause);
-                    ivDisc.startAnimation(animation);
-                }
-                setTotalTime();
-                UpdateTimeSong();
-            }
-        });
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                position++;
-                if (position > arrayListSong.size() - 1) {
-                    position = 0;
-                }
-                if (mediaPlayer.isPlaying()) {
-                    mediaPlayer.stop();
-                }
-                khoiTaoMediaPlayer();
-                mediaPlayer.start();
-                btnPlay.setImageResource(R.drawable.pause);
-            }
-        });
     }
 }

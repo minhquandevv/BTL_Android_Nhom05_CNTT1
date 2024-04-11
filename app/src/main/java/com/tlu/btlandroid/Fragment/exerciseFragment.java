@@ -118,21 +118,21 @@ public class exerciseFragment extends Fragment {
 
     private int getVideoResourceFromExerciseName(String exerciseName) {
         switch (exerciseName) {
+
+            case "Plank":
+                return R.raw.plank;
             case "Squad":
                 return R.raw.squad;
-            case "Plank":
-                return R.raw.coin;
-            case "Hip band":
-                return R.raw.flu;
+            case "Hip bent":
+                return R.raw.bent;
             case "Leg":
-                return R.raw.celebrity;
+                return R.raw.leg;
             case "Hanging":
-                return R.raw.lilac;
+                return R.raw.hanging;
             default:
                 return -1;
         }
     }
-
 
     private void showAddExerciseDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
